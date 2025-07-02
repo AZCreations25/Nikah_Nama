@@ -153,41 +153,44 @@
   <h1 style="background-color: #eebaef;">Nikah</h1>
   <h2 style="background-color: #eebaef;">Nikah Nama</h2>
 </header>
-
 <section class="products">
   <div class="product">
     <img src="Blue Nikah Nama.jpg" alt="Product">
-    <h3 id="productNameA">Customised Blue Nikah Nama </h3>
+    <h3>Customised Blue Nikah Nama</h3>
     <p>₹1000</p>
     QTY:<input type="number" id="qtyA" value="1" min="1" style="width: 25px;">
-    <br>Letters: <input type="text" id="letter1A" maxlength="1" style="width: 22px;"  placeholder="1st">
-    <input type="text" id="letter2A" maxlength="1" style="width: 22px;"  placeholder="2nd">
-    <button class="btn" onclick="addCustomToCart('A', 'Customised Blue Nikah Nama ', 1000)">Add to Cart</button>
-    <button class="btn" onclick="orderCustomProduct('A', 'Customised Blue Nikah Nama ', 1000)">Order</button>
+    <br>Letters:
+    <input type="text" id="letter1A" maxlength="1" style="width: 22px;" placeholder="1st">
+    <input type="text" id="letter2A" maxlength="1" style="width: 22px;" placeholder="2nd">
+    <button class="btn" onclick="addCustomToCart('A', 'Customised Blue Nikah Nama', 1000)">Add to Cart</button>
+    <button class="btn" onclick="orderCustomProduct('A', 'Customised Blue Nikah Nama', 1000)">Order</button>
   </div>
 
   <div class="product">
     <img src="Black Nikah Nama.jpg" alt="Product">
-    <h3 id="productNameB">Customised Black Nikah Nama</h3>
+    <h3>Customised Black Nikah Nama</h3>
     <p>₹1000</p>
     QTY:<input type="number" id="qtyB" value="1" min="1" style="width: 25px;">
-    <br>Letters: <input type="text" id="letter1B" maxlength="1" style="width: 22px;"  placeholder="1st">
-    <input type="text" id="letter2B" maxlength="1" style="width: 22px;"  placeholder="2nd">
+    <br>Letters:
+    <input type="text" id="letter1B" maxlength="1" style="width: 22px;" placeholder="1st">
+    <input type="text" id="letter2B" maxlength="1" style="width: 22px;" placeholder="2nd">
     <button class="btn" onclick="addCustomToCart('B', 'Customised Black Nikah Nama', 1000)">Add to Cart</button>
     <button class="btn" onclick="orderCustomProduct('B', 'Customised Black Nikah Nama', 1000)">Order</button>
   </div>
 
   <div class="product">
     <img src="Initial Nikah Nama.jpg" alt="Product">
-    <h3 id="productNameC">Customised Nikah Nama</h3>
+    <h3>Customised Nikah Nama</h3>
     <p>₹1000</p>
     QTY:<input type="number" id="qtyC" value="1" min="1" style="width: 25px;">
-    <br>Letters: <input type="text" id="letter1C" maxlength="1" style="width: 22px;"  placeholder="1st">
-    <input type="text" id="letter2C" maxlength="1" style="width: 22px;"  placeholder="2nd">
+    <br>Letters:
+    <input type="text" id="letter1C" maxlength="1" style="width: 22px;" placeholder="1st">
+    <input type="text" id="letter2C" maxlength="1" style="width: 22px;" placeholder="2nd">
     <button class="btn" onclick="addCustomToCart('C', 'Customised Nikah Nama', 1000)">Add to Cart</button>
     <button class="btn" onclick="orderCustomProduct('C', 'Customised Nikah Nama', 1000)">Order</button>
   </div>
 </section>
+
 
 
 <!-- Fixed Buttons -->
@@ -234,6 +237,22 @@
   </div>
 
 <script>
+  function addCustomToCart(id, baseName, price) {
+  const qty = parseInt(document.getElementById(`qty${id}`).value);
+  const l1 = document.getElementById(`letter1${id}`).value.toUpperCase() || '';
+  const l2 = document.getElementById(`letter2${id}`).value.toUpperCase() || '';
+  const finalName = `${baseName} - ${l1}${l2}`;
+  addToCart(finalName, price, qty);
+}
+
+function orderCustomProduct(id, baseName, price) {
+  const qty = parseInt(document.getElementById(`qty${id}`).value);
+  const l1 = document.getElementById(`letter1${id}`).value.toUpperCase() || '';
+  const l2 = document.getElementById(`letter2${id}`).value.toUpperCase() || '';
+  const finalName = `${baseName} - ${l1}${l2}`;
+  openSingleOrderForm(finalName, price, qty);
+}
+
     const cart = [];
   let currentSingleProduct = {};
 
